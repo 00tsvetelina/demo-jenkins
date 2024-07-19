@@ -2,25 +2,23 @@ pipeline {
 
     agent any
 
-    tools {
-        gradle 'Gradle-6.2'
-    }
-
     stages {
-        stage("run frontend") {
+
+        stage("build") {
             steps {
-                echo 'executing yarn...'
-                nodejs('Node-10.17') {
-                    sh 'yarn install'
-                }
+                echo 'building the applocation...'
             }
         }
 
-        stage("run backend") {
+        stage("tets") {
             steps {
-                echo 'executing gradle...'        
-                    sh './gradlew -v'
-                
+                echo 'testing the applocation...'
+            }
+        }
+        
+        stage("deploy") {
+            steps {
+                echo 'deploying the applocation...'
             }
         }
 
